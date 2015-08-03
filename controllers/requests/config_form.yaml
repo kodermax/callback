@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Request
+
+# Model Form Field configuration
+form: $/kodermax/callback/models/request/fields.yaml
+
+# Model Class name
+modelClass: Kodermax\CallBack\Models\Request
+
+# Default redirect location
+defaultRedirect: kodermax/callback/requests
+
+# Create page
+create:
+    title: Create Request
+    redirect: kodermax/callback/requests/update/:id
+    redirectClose: kodermax/callback/requests
+
+# Update page
+update:
+    title: Edit Request
+    redirect: kodermax/callback/requests
+    redirectClose: kodermax/callback/requests
+
+# Preview page
+preview:
+    title: Preview Request
