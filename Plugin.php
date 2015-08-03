@@ -50,7 +50,7 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'Kodermax\CallBack\Components\Form' => 'CallBackForm'
+            'Kodermax\CallBack\Components\Request' => 'CallBackForm'
         ];
     }
 }
