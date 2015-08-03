@@ -38,7 +38,7 @@ class Request extends ComponentBase
         $entry = RequestModel::add(post());
         try {
             Mail::send('kodermax.callback::emails.message', post(), function ($message) {
-                $message->from(post('email'), post('author'))
+                $message->from(post('email'), post('phone'))
                     ->to(Settings::get('recipient_email'), Settings::get('recipient_name'))
                     ->subject(Settings::get('subject'));
             });

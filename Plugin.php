@@ -53,4 +53,10 @@ class Plugin extends PluginBase
             'Kodermax\CallBack\Components\Request' => 'CallBackForm'
         ];
     }
+    public function registerMailTemplates()
+    {
+        return [
+            'kodermax.callback::emails.message' => 'kodermax.callback::lang.email.message',
+        ];
+    }
 }
