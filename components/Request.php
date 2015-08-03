@@ -2,8 +2,11 @@
 
 use Cms\Classes\ComponentBase;
 use Kodermax\CallBack\Models\Request as RequestModel;
+use Kodermax\CallBack\Models\Settings;
+use Mail;
 use Validator;
 use ValidationException;
+use Exception;
 
 class Request extends ComponentBase
 {
@@ -11,7 +14,7 @@ class Request extends ComponentBase
         'phone' => ['required']
     ];
     public $customMessages =  [
-        'phone.required' => 'Поле телефон не заполнено!',
+        'phone.required' => 'Поле Телефон не заполнено!'
     ];
     public function componentDetails()
     {
@@ -29,7 +32,7 @@ class Request extends ComponentBase
     {
 
         // Build the validator
-        $validator = Validator::make(post(), $this->formValidationRules, $this->customMessages);
+        $validator = Validator::make(post(), $this->formValidationRules);
         // Validate
         if ($validator->fails()) {
             throw new ValidationException($validator);
