@@ -12,6 +12,7 @@ class CreateRequestsTable extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }
