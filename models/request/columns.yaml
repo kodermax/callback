@@ -11,3 +11,6 @@ columns:
     phone:
         label: Phone
         type: text
+    created_at:
+        label: Date
+        type: datetime

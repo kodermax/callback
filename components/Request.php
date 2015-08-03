@@ -1,6 +1,7 @@
 <?php namespace Kodermax\CallBack\Components;
 
 use Cms\Classes\ComponentBase;
+use Kodermax\CallBack\Models\Request as RequestModel;
 use Validator;
 use ValidationException;
 
@@ -10,7 +11,7 @@ class Request extends ComponentBase
         'phone' => ['required']
     ];
     public $customMessages =  [
-        'phone.required' => 'kodermax.callback::lang.messages.phone.required',
+        'phone.required' => 'Поле телефон не заполнено!',
     ];
     public function componentDetails()
     {
@@ -34,10 +35,22 @@ class Request extends ComponentBase
             throw new ValidationException($validator);
         }
         //Add to Database
-        $entry = EntryModel::add(post());
+        $entry = RequestModel::add(post());
+        try {
+            Mail::send('kodermax.callback::emails.message', post(), function ($message) {
+                $message->from(post('email'), post('author'))
+                    ->to(Settings::get('recipient_email'), Settings::get('recipient_name'))
+                    ->subject(Settings::get('subject'));
+            });
+        }
+        catch (Exception $ex) {
 
+        }
 //        $this->page["confirmation_text"] = Settings::get('confirmation_text');
         return ['error' => false];
     }
-
+    public function onRun() {
+        $this->addJs('assets/components/jquery.inputmask/dist/inputmask/jquery.inputmask.min.js');
+        $this->addJs('assets/js/main.js');
+    }
 }

@@ -1,18 +1,24 @@
 <div class="call_back">
     <div class="call_back_head" id="call_back">
-        перезвоните мне <span class="close"></span>
+        РїРµСЂРµР·РІРѕРЅРёС‚Рµ РјРЅРµ <span class="close"></span>
     </div>
     <!-- end .call_back_head -->
-    <form class="form_phone">
-        <div class="txt">
-            Обратный звонок
+    <form class="form_phone" data-request="{{ __SELF__ }}::onPost" data-request-update="'{{ __SELF__ }}::confirm': '.confirm-container'">
+        <div class="post_form">
+            <div class="txt">
+                РћР±СЂР°С‚РЅС‹Р№ Р·РІРѕРЅРѕРє
+            </div>
+            <div class="phone">
+                <input type="text" name="phone" value="">
+            </div>
+            <!-- end .phone -->
+            <input class="btn" type="submit" value="РџРµСЂРµР·РІРѕРЅРёС‚Рµ РјРЅРµ">
         </div>
-        <div class="phone">
-            <input type="text" placeholder="+7 (___) ___-__-__">
+        <div class="confirm-container">
+            <!--This will contain the confirmation when the email is successfully sent-->
         </div>
-        <!-- end .phone -->
-        <input class="btn" type="submit" value="Перезвоните мне">
     </form>
     <!-- end .form_phone -->
     <span class="bg"></span>
+
 </div>

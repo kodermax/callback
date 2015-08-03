@@ -1,0 +1,26 @@
+{
+  "name": "callback",
+  "version": "0.0.1",
+  "authors": [
+    "kodermax <kodermax@gmail.com>"
+  ],
+  "description": "bower callback",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "license": "MIT",
+  "homepage": "kodermax.ru",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery.inputmask" : "~3.1.63"
+  }
+}
