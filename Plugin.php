@@ -16,11 +16,41 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'CallBack',
-            'description' => 'No description provided yet...',
-            'author'      => 'Kodermax',
+            'name'        => 'kodermax.callback::lang.plugin.name',
+            'description' => 'kodermax.feedback::lang.plugin.description',
+            'author'      => 'Maksim Karpychev',
             'icon'        => 'icon-leaf'
         ];
     }
-
+    public function registerSettings()
+    {
+        return [
+            'settings' => [
+                'label'       => 'kodermax.callback::lang.settings.label',
+                'description' => 'kodermax.callback::lang.settings.description',
+                'category'    => 'Marketing',
+                'icon'        => 'icon-cog',
+                'class'       => 'Kodermax\CallBack\Models\Settings',
+                'order'       => 100
+            ]
+        ];
+    }
+    public function registerNavigation()
+    {
+        return [
+            'reviews' => [
+                'label' => 'kodermax.callback::lang.menu.label',
+                'url'   => Backend::url('kodermax/callback/requests'),
+                'icon'        => 'icon-picture-o',
+                'permissions' => ['kodermax.*'],
+                'order'       => 500,
+            ],
+        ];
+    }
+    public function registerComponents()
+    {
+        return [
+            'Kodermax\CallBack\Components\Form' => 'CallBackForm'
+        ];
+    }
 }
