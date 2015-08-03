@@ -8,32 +8,12 @@ use Model;
 class Settings extends Model
 {
 
-    /**
-     * @var string The database table used by the model.
-     */
-    public $table = 'kodermax_callback_settings';
+    public $implement = [
+        'System.Behaviors.SettingsModel'
+    ];
 
-    /**
-     * @var array Guarded fields
-     */
-    protected $guarded = ['*'];
+    public $settingsCode = 'kodermax_callback_settings';
 
-    /**
-     * @var array Fillable fields
-     */
-    protected $fillable = [];
-
-    /**
-     * @var array Relations
-     */
-    public $hasOne = [];
-    public $hasMany = [];
-    public $belongsTo = [];
-    public $belongsToMany = [];
-    public $morphTo = [];
-    public $morphOne = [];
-    public $morphMany = [];
-    public $attachOne = [];
-    public $attachMany = [];
+    public $settingsFields = 'fields.yaml';
 
 }

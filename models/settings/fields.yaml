@@ -3,6 +3,23 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
-        disabled: true
+  recipient_email:
+    label: EMail Получателя
+    comment:  Человек, которому сообщение будет отправлено
+    description:  Человек, которому сообщение будет отправлено
+    type: text
+  recipient_name:
+    label: Имя получателя
+    comment:  Полное имя человека которому сообщение будет отправлено
+    description:  Полное имя человека которому сообщение будет отправлено
+    type: text
+  subject:
+      label: Тема
+      comment:  Тема письма
+      description:  Тема письма
+      type: text
+  confirmation_text:
+      label: Текст подтверждения
+      comment:  Текст, отображаемый для пользователя после заполнения формы
+      description:  Текст, отображаемый для пользователя после заполнения формы
+      type: textarea
