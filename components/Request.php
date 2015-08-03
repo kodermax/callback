@@ -46,7 +46,7 @@ class Request extends ComponentBase
         catch (Exception $ex) {
 
         }
-//        $this->page["confirmation_text"] = Settings::get('confirmation_text');
+        $this->page["confirmation_text"] = Settings::get('confirmation_text');
         return ['error' => false];
     }
     public function onRun() {
