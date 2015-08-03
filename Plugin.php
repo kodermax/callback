@@ -1,7 +1,7 @@
 <?php namespace Kodermax\CallBack;
 
 use System\Classes\PluginBase;
-
+use Backend;
 /**
  * CallBack Plugin Information File
  */
