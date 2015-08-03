@@ -17,7 +17,7 @@ class Plugin extends PluginBase
     {
         return [
             'name'        => 'kodermax.callback::lang.plugin.name',
-            'description' => 'kodermax.feedback::lang.plugin.description',
+            'description' => 'kodermax.callback::lang.plugin.description',
             'author'      => 'Maksim Karpychev',
             'icon'        => 'icon-leaf'
         ];

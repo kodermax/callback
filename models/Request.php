@@ -36,4 +36,12 @@ class Request extends Model
     public $attachOne = [];
     public $attachMany = [];
 
+    public static function add($data)
+    {
+        $entry = new static;
+        $entry->phone = array_get($data, 'phone');
+        $entry->save();
+        return $entry;
+    }
+
 }

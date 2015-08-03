@@ -6,3 +6,8 @@ columns:
     id:
         label: ID
         searchable: true
+    phone:
+        label: Phone
+    phone:
+        label: Phone
+        type: text
