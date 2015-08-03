@@ -41,7 +41,7 @@ class Plugin extends PluginBase
             'reviews' => [
                 'label' => 'kodermax.callback::lang.menu.label',
                 'url'   => Backend::url('kodermax/callback/requests'),
-                'icon'        => 'icon-picture-o',
+                'icon'        => 'icon-phone',
                 'permissions' => ['kodermax.*'],
                 'order'       => 500,
             ],
