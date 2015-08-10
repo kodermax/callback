@@ -14,7 +14,7 @@ class Request extends ComponentBase
         'phone' => ['required']
     ];
     public $customMessages =  [
-        'phone.required' => 'Поле Телефон не заполнено!'
+        'phone.required' => 'РќРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ С‚РµР»РµС„РѕРЅ!'
     ];
     public function componentDetails()
     {
