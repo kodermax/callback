@@ -41,7 +41,8 @@ class Request extends ComponentBase
         //Add to Database
         $entry = RequestModel::add(post());
         $client = new \GuzzleHttp\Client();
-        $message = Settings::get('subject') . urlencode(array_get(post(), 'phone'));
+        $dest = substr_replace(preg_replace('/[^0-9]/', '', array_get(post(), 'phone')), 8,0,1);
+        $message = Settings::get('subject') .' ' . $dest;
         $phone = Settings::get('recipient_phone');
         $login = Settings::get('login');
         $pass = Settings::get('pwd');
