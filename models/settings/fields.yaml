@@ -3,6 +3,21 @@
 # ===================================
 
 fields:
+  login:
+    label: Логин
+    comment:  Логин от системы www.smsc.ru
+    description:  Логин от системы www.smsc.ru
+    type: text
+  pwd:
+    label: Пароль
+    comment:  Пароль от системы www.smsc.ru
+    description:  Пароль от системы www.smsc.ru
+    type: text
+  recipient_phone:
+    label: Телефон Получателя
+    comment:  Человек, который получит смс уведомление
+    description:  Человек, который получит смс уведомление
+    type: text
   recipient_email:
     label: EMail Получателя
     comment:  Человек, которому сообщение будет отправлено

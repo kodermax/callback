@@ -7,6 +7,7 @@ use Mail;
 use Validator;
 use ValidationException;
 use Exception;
+use GuzzleHttp\Exception\RequestException;
 
 class Request extends ComponentBase
 {
@@ -39,7 +40,19 @@ class Request extends ComponentBase
         }
         //Add to Database
         $entry = RequestModel::add(post());
+        $client = new \GuzzleHttp\Client();
+        $message = Settings::get('subject') .' +' .array_get(post(), 'phone');
+        $phone = Settings::get('recipient_phone');
+        $login = Settings::get('login');
+        $pass = Settings::get('pwd');
+        $url = 'http://smsc.ru/sys/send.php?login='.$login.'&psw='.$pass.'&phones='.$phone.'&charset=utf-8&mes='.$message;
         try {
+            $res = $client->post($url);
+        }
+        catch (RequestException $e) {
+
+        }
+            try {
             Mail::send('kodermax.callback::emails.message', post(), function ($message) {
                 $message->from(post('email'), post('phone'))
                     ->to(Settings::get('recipient_email'), Settings::get('recipient_name'))
