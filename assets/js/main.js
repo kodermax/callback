@@ -6,13 +6,18 @@ $().ready(function(){
     $('.phone input').inputmask('+7(999)999-99-99',{"placeholder": "_",clearMaskOnLostFocus: false});
     var formPhone = $('.form_phone');
     formPhone.submit(function() {
-        var phone = formPhone.find('.phone input').val();
+        var phoneEl = formPhone.find('.phone input');
+        var phone = phoneEl.val();
         phone = phone.replace(/[^0-9]/g, '');
         if(phone.length !== 11) {
-            alert('Не верно указан телефон!');
+            phoneEl.focus();
+            $('.call_back .error').show();
+            phoneEl.addClass('wrong');
             return false;
         }
         else {
+            $('.call_back .error').hide();
+            phoneEl.removeClass('wrong');
             return true;
         }
     });
