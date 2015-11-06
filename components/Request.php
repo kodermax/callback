@@ -1,13 +1,13 @@
 <?php namespace Kodermax\CallBack\Components;
 
 use Cms\Classes\ComponentBase;
+use Guzzle\Http\Client;
 use Kodermax\CallBack\Models\Request as RequestModel;
 use Kodermax\CallBack\Models\Settings;
 use Mail;
 use Validator;
 use ValidationException;
 use Exception;
-use GuzzleHttp\Exception\RequestException;
 
 class Request extends ComponentBase
 {
@@ -40,18 +40,20 @@ class Request extends ComponentBase
         }
         //Add to Database
         $entry = RequestModel::add(post());
-        $client = new \GuzzleHttp\Client();
-        $dest = substr_replace(preg_replace('/[^0-9]/', '', array_get(post(), 'phone')), 8,0,1);
-        $message = Settings::get('subject') .' ' . $dest;
-        $phone = Settings::get('recipient_phone');
-        $login = Settings::get('login');
-        $pass = Settings::get('pwd');
-        $url = 'http://smsc.ru/sys/send.php?login='.$login.'&psw='.$pass.'&phones='.$phone.'&charset=utf-8&mes='.$message;
-        try {
-            $res = $client->post($url);
-        }
-        catch (RequestException $e) {
+        $sendSms = Settings::get('send_sms');
+        if($sendSms) {
+            $client = new Client();
+            $dest = substr_replace(preg_replace('/[^0-9]/', '', array_get(post(), 'phone')), 8, 0, 1);
+            $message = Settings::get('subject') . ' ' . $dest;
+            $phone = Settings::get('recipient_phone');
+            $login = Settings::get('login');
+            $pass = Settings::get('pwd');
+            $url = 'http://smsc.ru/sys/send.php?login=' . $login . '&psw=' . $pass . '&phones=' . $phone . '&charset=utf-8&mes=' . $message;
+            try {
+                $res = $client->post($url);
+            } catch (RequestException $e) {
 
+            }
         }
             try {
             Mail::send('kodermax.callback::emails.message', post(), function ($message) {

@@ -3,6 +3,9 @@
 # ===================================
 
 fields:
+  send_sms:
+    label: Отправлять смс?
+    type: checkbox
   login:
     label: Логин
     comment:  Логин от системы www.smsc.ru
