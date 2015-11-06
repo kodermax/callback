@@ -17,7 +17,7 @@ $().ready(function(){
         }
     });
     formPhone.on('ajaxSuccess', function(ev, context, data, status, jqXHR) {
-            if (data.error === true) {
+            if (data && data.error === true) {
                 return console.log(arguments);
             } else {
                 return $('.post_form').hide(1000);
