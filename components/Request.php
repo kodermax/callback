@@ -56,10 +56,10 @@ class Request extends ComponentBase
             }
         }
             try {
-            Mail::send('kodermax.callback::emails.message', post(), function ($message) {
-                $message->from(post('email'), post('phone'))
-                    ->to(Settings::get('recipient_email'), Settings::get('recipient_name'))
-                    ->subject(Settings::get('subject'));
+                $phone = post('phone');
+            Mail::send('kodermax.callback::emails.message', post(), function ($message) use ($phone) {
+                $message->to(Settings::get('recipient_email'), Settings::get('recipient_name'))
+                    ->subject(Settings::get('subject'). ' ' .$phone);
             });
         }
         catch (Exception $ex) {
