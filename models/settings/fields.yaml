@@ -20,6 +20,11 @@ fields:
     label: Телефон Получателя
     comment:  Человек, который получит смс уведомление
     description:  Человек, который получит смс уведомление
+    type:
+  from_email:
+    label: Email Отправителя
+    comment: От кого будет уходить письмо
+    description: От кого будет уходить письмо
     type: text
   recipient_email:
     label: EMail Получателя
