@@ -29,6 +29,10 @@ class Request extends ComponentBase
     {
         return [];
     }
+    private function encodeURIComponent($str) {
+        $revert = array('%21'=>'!', '%2A'=>'*', '%27'=>"'", '%28'=>'(', '%29'=>')');
+        return strtr(rawurlencode($str), $revert);
+    }
     public function onPost()
     {
 
@@ -42,16 +46,17 @@ class Request extends ComponentBase
         $entry = RequestModel::add(post());
         $sendSms = Settings::get('send_sms');
         if($sendSms) {
-            $client = new Client();
+            $client = new \GuzzleHttp\Client();
             $dest = substr_replace(preg_replace('/[^0-9]/', '', array_get(post(), 'phone')), 8, 0, 1);
             $message = Settings::get('subject') . ' ' . $dest;
             $phone = Settings::get('recipient_phone');
             $login = Settings::get('login');
             $pass = Settings::get('pwd');
-            $url = 'http://smsc.ru/sys/send.php?login=' . $login . '&psw=' . $pass . '&phones=' . $phone . '&charset=utf-8&mes=' . $message;
+            $url = 'http://smsc.ru/sys/send.php?login=' . $login . '&psw=' . $pass . '&phones=' . $phone . '&charset=utf-8&mes=' . urlencode($message);
+
             try {
-                $res = $client->post($url);
-            } catch (RequestException $e) {
+                $res = $client->request('GET', $url);
+            } catch (\Exception $e) {
 
             }
         }
