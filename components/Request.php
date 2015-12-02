@@ -75,7 +75,7 @@ class Request extends ComponentBase
         return ['error' => false];
     }
     public function onRun() {
-        $this->addJs('assets/components/jquery.inputmask/dist/inputmask/jquery.inputmask.min.js');
-        $this->addJs('assets/js/main.js');
+        $this->addJs('/plugins/kodermax/callback/assets/components/jquery.inputmask/dist/inputmask/jquery.inputmask.min.js');
+        $this->addJs('/plugins/kodermax/callback/assets/js/main.js');
     }
 }
